@@ -33,18 +33,19 @@ $num_instances = 3
 $instance_name_prefix = "k8s"
 $vm_gui = false
 $vm_memory = 2048
-$vm_cpus = 1
+$vm_cpus = 2
 $shared_folders = {}
 $forwarded_ports = {}
 $subnet = "172.17.8"
 $os = "ubuntu1804"
-$network_plugin = "flannel"
+# $network_plugin = "flannel"
+$network_plugin = "calico"
 # Setting multi_networking to true will install Multus: https://github.com/intel/multus-cni
 $multi_networking = false
 # The first three nodes are etcd servers
 $etcd_instances = $num_instances
 # The first two nodes are kube masters
-$kube_master_instances = $num_instances == 1 ? $num_instances : ($num_instances - 1)
+$kube_master_instances = $num_instances
 # All nodes are kube nodes
 $kube_node_instances = $num_instances
 # The following only works when using the libvirt provider
